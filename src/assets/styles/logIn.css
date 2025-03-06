@@ -1,0 +1,67 @@
+/* Reset some default styles */
+.login-page {
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Style for the login page background */
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #006d77, #83c5be);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Container for the login form */
+.login-container {
+  max-width: 400px;
+  background-color: #ffffff;
+  margin: 4rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading style */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Input styling */
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #006d77;
+  outline: none;
+}
