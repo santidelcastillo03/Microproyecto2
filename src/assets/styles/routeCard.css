@@ -1,0 +1,83 @@
+/* RouteCard.css */
+
+.route-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #3c5c33;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  }
+  
+  .route-image-container {
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .route-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .route-card:hover .route-image {
+    transform: scale(1.05);
+  }
+
+  .route-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .route-info {
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .route-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .route-button-container {
+    margin-top: auto;
+  }
+  
+  .route-info-button {
+    background: none;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+  
+  .arrow-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-left: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .route-image-container {
+      height: 160px;
+    }
+  }

@@ -1,5 +1,6 @@
 // src/views/pages/LandingPage.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/landingPage.css';
@@ -51,20 +52,20 @@ function LandingPage() {
       </section>
 
       {/* SECCIÓN RUTAS */}
-      <section className="routes-section">
-        <div className="section-content">
-          <div className="section-text">
-            <h2>Rutas</h2>
-            <div className="underline"></div>
-            <a href="#" className="btn-link">
-              <button className="ver-button">Ver <i className="fa fa-arrow-right"></i></button>
-            </a>
-          </div>
-          <div className="routes-image">
-            <img src="/ruta/a/imagen-señalización.jpg" alt="Señalización de rutas" />
-          </div>
-        </div>
-      </section>
+<section className="routes-section">
+  <div className="section-content">
+    <div className="section-text">
+      <h2>Rutas</h2>
+      <div className="underline"></div>
+      <Link to="/routes" className="btn-link">
+        <button className="ver-button">Ver <i className="fa fa-arrow-right"></i></button>
+      </Link>
+    </div>
+    <div className="routes-image">
+      <img src="/ruta/a/imagen-señalización.jpg" alt="Señalización de rutas" />
+    </div>
+  </div>
+</section>
 
       {/* SECCIÓN FORO E INFORMACIÓN */}
       <section className="info-forum-section">
