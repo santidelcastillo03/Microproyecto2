@@ -128,7 +128,8 @@ section {
   width: 55%;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Enhanced shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .gallery-image img, 
@@ -145,7 +146,7 @@ section {
 
 /* ROUTES SECTION */
 .routes-section {
-  background-color: #d6ae7e; /* Color beige/marrón claro */
+  background-color: #d6ae7e;
 }
 
 /* INFO AND FORUM SECTION */
@@ -173,6 +174,8 @@ section {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .info-card h2 {
@@ -185,32 +188,137 @@ section {
   flex-grow: 1;
 }
 
+/* Enhanced styling for the info card buttons */
 .info-card .btn-link {
   color: white;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.5rem;
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  align-self: flex-start;
+}
+
+.info-card .btn-link:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  z-index: 1;
+}
+
+.info-card .btn-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.info-card .btn-link:hover:before {
+  transform: translateX(0);
+}
+
+.info-card .btn-link:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Add the arrow icon effect */
+.info-card .btn-link:after {
+  content: "→";
+  margin-left: 0.6rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.info-card .btn-link:hover:after {
+  transform: translateX(4px);
 }
 
 /* BUTTONS */
+/* BUTTONS - Enhanced styling */
 .ver-button {
-  background-color: #2b4923;
+  background: linear-gradient(135deg, #2b4923 0%, #1e3619 100%);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: background-color 0.2s ease;
+  gap: 0.6rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add arrow to Ver buttons */
+.ver-button:after {
+  content: "→";
+  margin-left: 0.4rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.ver-button:hover:after {
+  transform: translateX(4px);
+}
+
+.ver-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
 }
 
 .ver-button:hover {
-  background-color: #1e3619; /* Darker green on hover */
+  background: linear-gradient(135deg, #324f29 0%, #243e1e 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 7px 14px rgba(0,0,0,0.15), 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.ver-button:hover:before {
+  transform: translateX(0);
+}
+
+.ver-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.ver-button i, 
+.ver-button .fa-arrow-right {
+  transition: transform 0.3s ease;
+}
+
+.ver-button:hover i,
+.ver-button:hover .fa-arrow-right {
+  transform: translateX(4px);
+}
+
+.ver-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(43, 73, 35, 0.3), 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .btn-link {
@@ -218,20 +326,12 @@ section {
   text-decoration: none;
 }
 
-/* HEADER & FOOTER */
-header, 
-.main-header {
-  width: 100vw;
-  margin: 0;
-  padding: 0;
+.btn-link {
+  display: inline-block;
+  text-decoration: none;
 }
 
-footer, 
-.main-footer {
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-}
+
 
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 768px) {

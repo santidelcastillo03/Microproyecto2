@@ -1,10 +1,11 @@
 import React from 'react';
-import Header from '../components/Header.jsx'; // Using your existing Header component
+import Header from '../components/Header.jsx'; 
 import RouteCard from '../components/RouteCard';
 import '../../assets/styles/rutas.css';
+import cruzPalmeros from '../../assets/images/cruz-palmeros.png';
 
 const rutas = () => {
-  // Sample route data - in a real app, this would come from props or an API
+  // Sampledata 
   const routes = [
     {
       id: 1,
@@ -24,7 +25,7 @@ const rutas = () => {
     {
       id: 4,
       title: 'Cruz de los Palmeros',
-      imageSrc: '/images/cruz-palmeros.jpg'
+      imageSrc: cruzPalmeros
     },
     {
       id: 5,
@@ -49,7 +50,7 @@ const rutas = () => {
   ];
 
   return (
-    <div className="hiking-routes-container">
+    <div className="rutas-container">
       <Header />
       <main className="main-content">
         <h1 className="routes-title">Rutas Disponibles:</h1>

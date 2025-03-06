@@ -5,6 +5,8 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/landingPage.css';
 import logo from '../../assets/images/logo.png';
+import mountainImage from '../../assets/images/imagen-montana.png';
+import rutasImage from '../../assets/images/imagen-senalizacion.png';
 
 function LandingPage() {
   return (
@@ -46,7 +48,7 @@ function LandingPage() {
             </a>
           </div>
           <div className="gallery-image">
-            <img src="/ruta/a/imagen-montaña.jpg" alt="Vista del Ávila" />
+            <img src={mountainImage} alt="Vista del Ávila" />
           </div>
         </div>
       </section>
@@ -62,7 +64,7 @@ function LandingPage() {
       </Link>
     </div>
     <div className="routes-image">
-      <img src="/ruta/a/imagen-señalización.jpg" alt="Señalización de rutas" />
+      <img src={rutasImage} alt="Señalización de rutas" />
     </div>
   </div>
 </section>

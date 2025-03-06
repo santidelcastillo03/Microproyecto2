@@ -13,7 +13,7 @@ function Header() {
       </div>
       <nav className="landing-nav">
         <ul>
-          <li><a href="#">Ver Rutas</a></li>
+          <li><a href="#">Rutas</a></li>
           <li><a href="#">Foro</a></li>
           <li><a href="#">Galería</a></li>
           <li><a href="#">Reservas</a></li>
