@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/register.css';
+import { register } from "./Auth";
 
 function Register() {
   const [role, setRole] = useState('');
@@ -12,6 +14,7 @@ function Register() {
     password: '',
   });
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleRoleSelection = (selectedRole) => {
     setRole(selectedRole);
@@ -20,18 +23,33 @@ function Register() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(''); // Clear error when user changes input
+    setError(''); // Limpiar error al modificar el input
+    setSuccess(''); // Limpiar mensaje de éxito
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // If role is estudiante, validate that email contains @correo.unimet.edu.ve
+
+    // Si el rol es estudiante, se valida que el correo sea del dominio específico
     if (role === 'estudiante' && !formData.email.includes('@correo.unimet.edu.ve')) {
       setError('El correo debe pertenecer a @correo.unimet.edu.ve para estudiantes.');
       return;
     }
-    // Registration logic here
-    console.log('Registrando usuario:', { role, ...formData });
+
+    try {
+      await register(formData.email, formData.password);
+      console.log('Usuario registrado exitosamente:', { role, ...formData });
+      setSuccess("Registrado exitosamente.");
+      setError('');
+    } catch (error) {
+      console.error("Error en el registro:", error.message);
+      if (error.code === 'auth/email-already-in-use') {
+        setError("El correo ingresado se encuentra en uso.");
+      } else {
+        setError("Error en el registro, por favor intente nuevamente.");
+      }
+      setSuccess('');
+    }
   };
 
   return (
@@ -79,7 +97,13 @@ function Register() {
               />
             </div>
             {error && <p className="error-message">{error}</p>}
+            {success && <p className="success-message">{success}</p>}
             <button type="submit">Registrarse</button>
+            <p className="link-text" style={{ marginTop: '1rem' }}>
+              <Link to="/login" className="full-link">
+                ¿Ya tienes una cuenta? Inicia sesión aquí.
+              </Link>
+            </p>
           </form>
         </div>
       </section>

@@ -1,126 +1,143 @@
 /* Basic page styles */
 .register-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Make sure the main content (registration form or modal) expands to fill available space */
-  .register-section,
-  .modal-overlay {
-    flex: 1;
-  }
-  
-  /* Container for the registration form */
-  .register-container {
-    max-width: 400px;
-    background-color: #ffffff;
-    margin: 4rem auto;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Form styling */
-  .register-container h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1.2rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #555;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-group input:focus {
-    border-color: #006d77;
-    outline: none;
-  }
-  
-  button[type='submit'] {
-    width: 100%;
-    padding: 0.8rem;
-    background-color: #006d77;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button[type='submit']:hover {
-    background-color: #00555a;
-  }
-  
-  .error-message {
-    color: red;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  /* Modal styles */
-  /* ... existing styles ... */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+/* Make sure the main content (registration form or modal) expands to fill available space */
+.register-section,
+.modal-overlay {
+  flex: 1;
+}
+
+/* Container for the registration form */
+.register-container {
+  max-width: 400px;
+  background-color: #ffffff;
+  margin: 4rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #006d77;
+  outline: none;
+}
+
+button[type='submit'] {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #006d77;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type='submit']:hover {
+  background-color: #00555a;
+}
+
+/* Mensajes: Error y éxito en color negro */
+.error-message {
+  color: #b60d0d;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.success-message {
+  color: #000;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Modal styles */
+/* ... existing styles ... */
 
 /* Modal styles - make sure the overlay covers only enough area and has a high z-index */
 .modal-overlay {
-    position: fixed; /* using fixed keeps the modal in place relative to the viewport */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000; /* high z-index so it overlays the registration content */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.3);  /* semi-transparent background */
-  }
-  
-  .modal {
-    background-color: #012604;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    max-width: 300px;
-    width: 90%;
-  }
-  
-  /* Other modal-related styles remain unchanged */
-  .modal h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .modal-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 1.5rem;
-  }
-  
-  .modal-buttons button {
-    padding: 0.5rem 1rem;
-    background-color: #006d77;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .modal-buttons button:hover {
-    background-color: #00555a;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  background-color: #012604;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 300px;
+  width: 90%;
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+  padding: 0.5rem 1rem;
+  background-color: #006d77;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #00555a;
+}
+
+.link-text {
+  text-align: center;
+  margin-top: 1rem; /* o el valor que prefieras */
+}
+
+/* Estilos para el link */
+.full-link {
+  color: #000; /* Color negro */
+  text-decoration: underline;
+}
