@@ -6,6 +6,7 @@ import '../../assets/styles/logIn.css';
 import { login } from "./Auth";
 import { sendPasswordResetEmail, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../services/firebaseConfig.js';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 function ForgotPasswordModal({ onClose }) {
   const [email, setEmail] = useState('');
@@ -48,11 +49,62 @@ function ForgotPasswordModal({ onClose }) {
   );
 }
 
+function GoogleProfileModal({ onClose, onSubmit }) {
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !role) return;
+    onSubmit({ name, role });
+  };
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal">
+        <h2>Completa tu perfil</h2>
+        <p>Ingresa tu nombre y selecciona tu rol para completar el registro.</p>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="googleName">Nombre Completo</label>
+            <input
+              type="text"
+              id="googleName"
+              name="googleName"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Tu nombre"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Rol</label>
+            <div className="modal-buttons">
+              <button type="button" onClick={() => setRole('guia')}>
+                Guía
+              </button>
+              <button type="button" onClick={() => setRole('estudiante')}>
+                Estudiante
+              </button>
+            </div>
+            {role && <p>Seleccionado: <strong>{role}</strong></p>}
+          </div>
+          <button type="submit">Guardar</button>
+        </form>
+        <button onClick={onClose} className="close-button">Cerrar</button>
+      </div>
+    </div>
+  );
+}
+
 function LogIn() {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [showForgotModal, setShowForgotModal] = useState(false);
+  const [showGoogleModal, setShowGoogleModal] = useState(false);
+  const [googleUser, setGoogleUser] = useState(null);
   const navigate = useNavigate();
+  const db = getFirestore();
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -76,11 +128,39 @@ function LogIn() {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       console.log('Google user:', result.user);
-      setError('');
-      navigate('/');
+      // Verificar si ya existe en la colección "users"
+      const userRef = doc(db, "users", result.user.uid);
+      const userSnap = await getDoc(userRef);
+      if (userSnap.exists()) {
+        // Usuario ya registrado, navegar a la ruta principal
+        setError('');
+        navigate('/');
+      } else {
+        // Primer login, se debe completar el perfil
+        setGoogleUser(result.user);
+        setShowGoogleModal(true);
+      }
     } catch (err) {
       console.error('Error with Google sign in:', err);
       setError("Error al iniciar sesión con Google.");
+    }
+  };
+
+  const handleGoogleProfileSubmit = async ({ name, role }) => {
+    try {
+      // Guardar en Firestore los datos del usuario con Google
+      await setDoc(doc(db, "users", googleUser.uid), {
+        name: name,
+        email: googleUser.email,
+        uid: googleUser.uid,
+        role: role
+      });
+      setShowGoogleModal(false);
+      setError('');
+      navigate('/');
+    } catch (err) {
+      console.error('Error saving Google profile:', err);
+      setError("Error al guardar el perfil de Google.");
     }
   };
 
@@ -137,6 +217,12 @@ function LogIn() {
         </div>
       </section>
       {showForgotModal && <ForgotPasswordModal onClose={() => setShowForgotModal(false)} />}
+      {showGoogleModal && (
+        <GoogleProfileModal 
+          onClose={() => setShowGoogleModal(false)}
+          onSubmit={handleGoogleProfileSubmit}
+        />
+      )}
       <Footer />
     </div>
   );

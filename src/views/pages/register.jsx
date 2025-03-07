@@ -4,6 +4,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/register.css';
 import { register } from "./Auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 function Register() {
   const [role, setRole] = useState('');
@@ -16,6 +17,8 @@ function Register() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  const db = getFirestore();
+
   const handleRoleSelection = (selectedRole) => {
     setRole(selectedRole);
     setShowModal(false);
@@ -23,22 +26,32 @@ function Register() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(''); // Limpiar error al modificar el input
-    setSuccess(''); // Limpiar mensaje de éxito
+    setError('');
+    setSuccess('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Si el rol es estudiante, se valida que el correo sea del dominio específico
+    // Validación para estudiantes
     if (role === 'estudiante' && !formData.email.includes('@correo.unimet.edu.ve')) {
       setError('El correo debe pertenecer a @correo.unimet.edu.ve para estudiantes.');
       return;
     }
 
     try {
-      await register(formData.email, formData.password);
+      // Registrar usuario y obtener userCredential
+      const userCredential = await register(formData.email, formData.password);
       console.log('Usuario registrado exitosamente:', { role, ...formData });
+      
+      // Guardar datos en Firestore en la colección "users", usando el uid del usuario
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        name: formData.name,
+        email: formData.email,
+        uid: userCredential.user.uid,
+        role: role
+      });
+
       setSuccess("Registrado exitosamente.");
       setError('');
     } catch (error) {
