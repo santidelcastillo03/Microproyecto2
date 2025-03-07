@@ -4,7 +4,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/logIn.css';
 import { login } from "./Auth";
-import { sendPasswordResetEmail } from 'firebase/auth';
+import { sendPasswordResetEmail, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../services/firebaseConfig.js';
 
 function ForgotPasswordModal({ onClose }) {
@@ -71,6 +71,19 @@ function LogIn() {
     }
   };
 
+  const signInWithGoogle = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      console.log('Google user:', result.user);
+      setError('');
+      navigate('/');
+    } catch (err) {
+      console.error('Error with Google sign in:', err);
+      setError("Error al iniciar sesión con Google.");
+    }
+  };
+
   return (
     <div className="login-page">
       <Header />
@@ -104,6 +117,9 @@ function LogIn() {
             </div>
             {error && <p className="error-message">{error}</p>}
             <button type="submit">Acceder</button>
+            <button type="button" onClick={signInWithGoogle} className="google-btn">
+              Iniciar sesión con Google
+            </button>
             <p className="link-text" style={{ marginTop: '1rem' }}>
               <Link to="/register" className="full-link">
                 ¿No tienes una cuenta? Regístrate aquí.
