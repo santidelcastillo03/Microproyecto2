@@ -126,9 +126,7 @@
   transform: translateX(0);
 }
 
-/* Google button styling */
-/* Google button styling */
-/* Google button styling */
+
 button.google-btn {
   width: 100%;
   padding: 0.9rem;
@@ -234,4 +232,191 @@ button.google-btn img {
   padding: 0.75rem;
   background-color: rgba(182, 13, 13, 0.08);
   border-radius: 6px;
+}
+
+/* Modal styles for the Google profile completion */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%);
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  width: 90%;
+  max-width: 450px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: modalAppear 0.4s ease-out;
+}
+
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #2b4923 0%, #3c5c33 100%);
+}
+
+.modal h2 {
+  color: #2b4923;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.modal p {
+  color: #555;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.modal input {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.modal input:focus {
+  border-color: #2b4923;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(43, 73, 35, 0.1);
+  background-color: #fff;
+}
+
+/* Role selection buttons */
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.modal-buttons button {
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  background-color: #f8f8f8;
+  color: #444;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #efefef;
+  transform: translateY(-2px);
+}
+
+.modal-buttons button.selected,
+.modal-buttons button:focus {
+  background-color: #2b4923;
+  color: white;
+  border-color: #2b4923;
+  outline: none;
+}
+
+/* Role selection confirmation */
+.modal p strong {
+  color: #2b4923;
+  font-weight: 600;
+}
+
+/* Submit button */
+.modal button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #2b4923 0%, #1e3619 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+
+.modal button[type="submit"]:hover {
+  background: linear-gradient(135deg, #324f29 0%, #243e1e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Close button */
+/* Replace the existing close button styles with these */
+.modal .close-button {
+  position: fixed; /* Changed from absolute to fixed */
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 5px 12px;
+  line-height: 1;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100; /* Higher than the modal overlay */
+}
+
+.modal .close-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+
+/* Animation */
+@keyframes modalAppear {
+  0% { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

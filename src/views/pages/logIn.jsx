@@ -92,7 +92,7 @@ function GoogleProfileModal({ onClose, onSubmit }) {
           </div>
           <button type="submit">Guardar</button>
         </form>
-        <button onClick={onClose} className="close-button">Cerrar</button>
+        <button onClick={onClose} className="close-button">X</button>
       </div>
     </div>
   );
