@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Add useNavigate
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/register.css';
@@ -7,6 +7,7 @@ import { register } from "./Auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 function Register() {
+  const navigate = useNavigate(); // Initialize navigate
   const [role, setRole] = useState('');
   const [showModal, setShowModal] = useState(true);
   const [formData, setFormData] = useState({
@@ -54,6 +55,13 @@ function Register() {
 
       setSuccess("Registrado exitosamente.");
       setError('');
+      
+      // Redirect to landing page after successful registration
+      // You can add a small delay to show the success message before redirecting
+      setTimeout(() => {
+        navigate('/'); // Redirect to the landing page
+      }, 1500); // Wait 1.5 seconds before redirecting
+      
     } catch (error) {
       console.error("Error en el registro:", error.message);
       if (error.code === 'auth/email-already-in-use') {
@@ -64,6 +72,7 @@ function Register() {
       setSuccess('');
     }
   };
+
 
   return (
     <div className="register-page">

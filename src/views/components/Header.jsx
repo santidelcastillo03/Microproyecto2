@@ -1,16 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.png';
 import '../../assets/styles/header.css';
 import { useAuth } from '../../context/AuthContext';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 function Header() {
   const { currentUser, logout } = useAuth();
+  const [userRole, setUserRole] = useState(null);
+  
+  // Fetch user role from Firestore when currentUser changes
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      if (currentUser) {
+        try {
+          const db = getFirestore();
+          const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+          
+          if (userDoc.exists()) {
+            setUserRole(userDoc.data().role);
+          } else {
+            setUserRole(null);
+          }
+        } catch (error) {
+          console.error("Error fetching user role:", error);
+          setUserRole(null);
+        }
+      } else {
+        setUserRole(null);
+      }
+    };
+    
+    fetchUserRole();
+  }, [currentUser]);
 
   const handleLogout = async () => {
     try {
       await logout();
-      // No need for navigation as onAuthStateChanged in AuthContext will update UI
     } catch (error) {
       console.error('Failed to log out', error);
     }
@@ -26,9 +52,17 @@ function Header() {
       <nav className="landing-nav">
         <ul>
           <li><Link to="/routes">Rutas</Link></li>
-          <li><a href="#">Foro</a></li>
-          <li><a href="#">Galería</a></li>
-          <li><a href="#">Reservas</a></li>
+          <li><Link to="/forum">Foro</Link></li>
+          <li><Link to="/gallery">Galería</Link></li>
+          
+          {/* Conditional rendering based on user role */}
+          {currentUser && userRole === 'estudiante' && (
+            <li><Link to="/reservations">Reservas</Link></li>
+          )}
+          
+          {currentUser && userRole === 'guia' && (
+            <li><Link to="/activities">Actividades</Link></li>
+          )}
         </ul>
       </nav>
       <div className="landing-nav-right">

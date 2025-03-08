@@ -9,8 +9,18 @@
   width: 100%;
 }
 
+/* Logo on the far left */
+.landing-header-logo {
+  margin-right: 2rem;
+}
+
 .landing-header-logo img {
   height: 50px;
+}
+
+/* Navigation links next to the logo */
+.landing-nav {
+  flex-grow: 1;
 }
 
 .landing-nav ul {
@@ -32,10 +42,12 @@
   color: #c17f45; /* Color accent on hover */
 }
 
+/* Right section with auth buttons */
 .landing-nav-right {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-left: auto;
 }
 
 .landing-nav-right a {
@@ -62,11 +74,10 @@
   background-color: #f0f0f0;
 }
 
-/* Auth buttons styling - add to the end of your existing header.css */
+/* Auth buttons styling */
 .auth-buttons {
   display: flex;
   gap: 10px;
-  margin-left: 15px;
 }
 
 .auth-btn {
@@ -92,18 +103,19 @@
   background-color: rgba(43, 73, 35, 0.1);
 }
 
-/* Register button - filled style */
+
 .register-btn {
   background-color: #2b4923;
-  color: white;
+  color: white !important; /* Force white color */
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .register-btn:hover {
-  background-color: #324f29;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background-color: #2b4923; /* Keep the green background */
+  color: #c17f45 !important; /* Change text color to orange on hover */
+  /* No transform, no additional box-shadow */
 }
 
 /* Logout button - subtle style */
@@ -126,16 +138,22 @@
   
   .landing-header-logo {
     margin-bottom: 1rem;
+    margin-right: 0;
+  }
+  
+  .landing-nav {
+    width: 100%;
+    margin-bottom: 1rem;
   }
   
   .landing-nav ul {
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 1rem;
   }
   
   .landing-nav-right {
     flex-wrap: wrap;
     justify-content: center;
+    margin-left: 0;
   }
 }
