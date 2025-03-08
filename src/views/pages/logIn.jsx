@@ -4,7 +4,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/logIn.css';
 import { login } from "./Auth";
-import googleLogo from '../../assets/images/googleLogo.png'; // Adjust path to match your file location
+import googleLogo from '../../assets/images/googleLogo.png'; // Adjust path if needed
 import { sendPasswordResetEmail, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../services/firebaseConfig.js';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
@@ -50,7 +50,7 @@ function ForgotPasswordModal({ onClose }) {
   );
 }
 
-function GoogleProfileModal({ onClose, onSubmit }) {
+function GoogleProfileModal({ onClose, onSubmit, userEmail }) {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
 
@@ -84,7 +84,16 @@ function GoogleProfileModal({ onClose, onSubmit }) {
               <button type="button" onClick={() => setRole('guia')}>
                 Guía
               </button>
-              <button type="button" onClick={() => setRole('estudiante')}>
+              <button 
+                type="button" 
+                onClick={() => setRole('estudiante')}
+                disabled={!userEmail.endsWith('@correo.unimet.edu.ve')}
+                title={
+                  userEmail.endsWith('@correo.unimet.edu.ve')
+                    ? ''
+                    : 'Correo no permitido para estudiantes'
+                }
+              >
                 Estudiante
               </button>
             </div>
@@ -223,6 +232,7 @@ function LogIn() {
         <GoogleProfileModal 
           onClose={() => setShowGoogleModal(false)}
           onSubmit={handleGoogleProfileSubmit}
+          userEmail={googleUser.email}
         />
       )}
       <Footer />
