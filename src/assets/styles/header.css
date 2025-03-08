@@ -62,6 +62,61 @@
   background-color: #f0f0f0;
 }
 
+/* Auth buttons styling - add to the end of your existing header.css */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  margin-left: 15px;
+}
+
+.auth-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Login button - outlined style */
+.login-btn {
+  color: #2b4923;
+  background-color: transparent;
+  border: 1.5px solid #2b4923;
+}
+
+.login-btn:hover {
+  background-color: rgba(43, 73, 35, 0.1);
+}
+
+/* Register button - filled style */
+.register-btn {
+  background-color: #2b4923;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.register-btn:hover {
+  background-color: #324f29;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Logout button - subtle style */
+.logout-btn {
+  color: #c17f45;
+  background-color: transparent;
+  border: 1.5px solid #c17f45;
+}
+
+.logout-btn:hover {
+  background-color: rgba(193, 127, 69, 0.1);
+}
+
 /* Media query for responsive header */
 @media (max-width: 768px) {
   .landing-header {
