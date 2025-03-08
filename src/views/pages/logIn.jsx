@@ -4,6 +4,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/logIn.css';
 import { login } from "./Auth";
+import googleLogo from '../../assets/images/googleLogo.png'; // Adjust path to match your file location
 import { sendPasswordResetEmail, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../services/firebaseConfig.js';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
@@ -198,6 +199,7 @@ function LogIn() {
             {error && <p className="error-message">{error}</p>}
             <button type="submit">Acceder</button>
             <button type="button" onClick={signInWithGoogle} className="google-btn">
+              <img src={googleLogo} alt="Google logo" className="google-icon" />
               Iniciar sesión con Google
             </button>
             <p className="link-text" style={{ marginTop: '1rem' }}>

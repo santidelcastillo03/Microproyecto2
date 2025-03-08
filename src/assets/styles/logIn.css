@@ -1,13 +1,4 @@
 /* Reset some default styles */
-.login-page {
-    background-color: #ffffff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,7 +9,10 @@
 /* Style for the login page background */
 .login-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #006d77, #83c5be);
+  background: linear-gradient(135deg, #d6ae7e 0%, #c17f45 100%);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,56 +23,215 @@
   max-width: 400px;
   background-color: #ffffff;
   margin: 4rem auto;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* Green accent at the top of the form */
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #2b4923 0%, #3c5c33 100%);
+  border-radius: 12px 12px 0 0;
 }
 
 /* Heading style */
 .login-container h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333;
+  margin-bottom: 2rem;
+  color: #2b4923;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 /* Form groups */
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: #333;
+  font-weight: 500;
 }
 
 /* Input styling */
 .form-group input {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
+  padding: 0.9rem;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background-color: #f8f8f8;
+  color: #333;  /* Add this line to ensure text is dark */
+}
+
+.form-group input::placeholder {
+  color: #999;  /* Also style the placeholder text */
 }
 
 .form-group input:focus {
-  border-color: #006d77;
+  border-color: #2b4923;
   outline: none;
+  box-shadow: 0 0 0 3px rgba(43, 73, 35, 0.1);
+  background-color: #fff;
+  color: #333;  /* Ensure text stays dark on focus */
 }
 
-button.google-btn {
+/* Login button styling */
+.login-button {
   width: 100%;
-  padding: 0.8rem;
-  background-color: #db4437; /* Color rojo de Google */
+  padding: 1rem;
+  background: linear-gradient(135deg, #2b4923 0%, #1e3619 100%);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, #324f29 0%, #243e1e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
+}
+
+.login-button:hover:before {
+  transform: translateX(0);
+}
+
+/* Google button styling */
+/* Google button styling */
+/* Google button styling */
+button.google-btn {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
 }
 
 button.google-btn:hover {
-  background-color: #c33d2e;
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+button.google-btn:hover {
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+button.google-btn img {
+  height: 20px;
+  width: 20px;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  color: #777;
+}
+
+.divider::before, 
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.divider span {
+  padding: 0 10px;
+  font-size: 0.9rem;
+}
+
+/* Link to register */
+.register-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #555;
+}
+
+.register-link a {
+  color: #2b4923;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.register-link a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #2b4923;
+  transition: width 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #1e3619;
+}
+
+.register-link a:hover:after {
+  width: 100%;
+}
+
+/* Error message styles */
+.error-message {
+  color: #b60d0d;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(182, 13, 13, 0.08);
+  border-radius: 6px;
 }

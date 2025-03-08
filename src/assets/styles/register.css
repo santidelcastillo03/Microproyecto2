@@ -5,86 +5,142 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
-}
-
-/* Make sure the main content (registration form or modal) expands to fill available space */
-.register-section,
-.modal-overlay {
-  flex: 1;
+  background: linear-gradient(135deg, #d6ae7e 0%, #c17f45 100%);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 /* Container for the registration form */
 .register-container {
-  max-width: 400px;
+  max-width: 450px;
   background-color: #ffffff;
   margin: 4rem auto;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.register-container p {
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.register-container p strong {
+  color: #2b4923;
+  font-weight: 600;
+}
+
+/* Green accent at the top of the form */
+.register-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #2b4923 0%, #3c5c33 100%);
+  border-radius: 12px 12px 0 0;
 }
 
 /* Form styling */
 .register-container h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  color: #2b4923;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: #333;
+  font-weight: 500;
 }
 
 .form-group input {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
+  padding: 0.9rem;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  background-color: #f8f8f8;
 }
 
 .form-group input:focus {
-  border-color: #006d77;
+  border-color: #2b4923;
   outline: none;
+  box-shadow: 0 0 0 3px rgba(43, 73, 35, 0.1);
+  background-color: #fff;
 }
 
 button[type='submit'] {
   width: 100%;
-  padding: 0.8rem;
-  background-color: #006d77;
+  padding: 1rem;
+  background: linear-gradient(135deg, #2b4923 0%, #1e3619 100%);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+button[type='submit']:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
 }
 
 button[type='submit']:hover {
-  background-color: #00555a;
+  background: linear-gradient(135deg, #324f29 0%, #243e1e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* Mensajes: Error y éxito en color negro */
+button[type='submit']:hover:before {
+  transform: translateX(0);
+}
+
+/* Messages */
 .error-message {
   color: #b60d0d;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(182, 13, 13, 0.08);
+  border-radius: 6px;
 }
 
 .success-message {
-  color: #000;
-  margin-bottom: 1rem;
+  color: #2b4923;
+  margin-bottom: 1.5rem;
   text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(43, 73, 35, 0.08);
+  border-radius: 6px;
 }
 
 /* Modal styles */
-/* ... existing styles ... */
-
-/* Modal styles - make sure the overlay covers only enough area and has a high z-index */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -95,49 +151,99 @@ button[type='submit']:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
 }
 
 .modal {
-  background-color: #012604;
-  padding: 2rem;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #2b4923 0%, #1e3619 100%);
+  padding: 2.5rem;
+  border-radius: 12px;
   text-align: center;
-  max-width: 300px;
+  max-width: 400px;
   width: 90%;
+  color: white;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .modal h2 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: white;
 }
 
 .modal-buttons {
   display: flex;
   justify-content: space-around;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .modal-buttons button {
-  padding: 0.5rem 1rem;
-  background-color: #006d77;
-  border: none;
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-buttons button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
 }
 
 .modal-buttons button:hover {
-  background-color: #00555a;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.modal-buttons button:hover:before {
+  transform: translateX(0);
 }
 
 .link-text {
   text-align: center;
-  margin-top: 1rem; /* o el valor que prefieras */
+  margin-top: 1.5rem;
+  color: #555;
 }
 
-/* Estilos para el link */
 .full-link {
-  color: #000; /* Color negro */
-  text-decoration: underline;
+  color: #2b4923;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.full-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #2b4923;
+  transition: width 0.3s ease;
+}
+
+.full-link:hover {
+  color: #1e3619;
+}
+
+.full-link:hover:after {
+  width: 100%;
 }
