@@ -44,7 +44,7 @@ function ForgotPasswordModal({ onClose }) {
           {message && <p className="success-message">{message}</p>}
           <button type="submit">Enviar</button>
         </form>
-        <button onClick={onClose} className="close-button">Cerrar</button>
+        <button onClick={onClose} className="close-button">X</button>
       </div>
     </div>
   );
