@@ -56,11 +56,7 @@ function Register() {
       setSuccess("Registrado exitosamente.");
       setError('');
       
-      // Redirect to landing page after successful registration
-      // You can add a small delay to show the success message before redirecting
-      setTimeout(() => {
-        navigate('/'); // Redirect to the landing page
-      }, 1500); // Wait 1.5 seconds before redirecting
+      navigate('/'); 
       
     } catch (error) {
       console.error("Error en el registro:", error.message);
