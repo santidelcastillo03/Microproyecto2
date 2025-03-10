@@ -73,7 +73,6 @@ const rutas = () => {
         </div>
       </main>
       <div className="mountain-footer"></div>
-      <Footer />
     </div>
   );
 };

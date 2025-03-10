@@ -1,9 +1,9 @@
 
 .rutas-container {
   background-image: url('../../assets/images/background1.png');
-  background-size: 100% auto;
+  background-size: 100% auto; /* Change from 'cover' to show more of the height */
   background-repeat: no-repeat;
-  background-position: center bottom; 
+  background-position: center bottom; /* Change from 'center' to 'center bottom' */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,13 +28,7 @@
   margin-bottom: 2rem;
 }
 
-.mountain-footer {
-  height: 60px;
-  background-image: url('/images/mountain-silhouette.png');
-  background-repeat: repeat-x;
-  background-position: bottom;
-  margin-top: auto;
-}
+
 
 @media (max-width: 768px) {
   .routes-grid {
