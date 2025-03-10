@@ -7,7 +7,7 @@ import { register } from "./Auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 function Register() {
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); 
   const [role, setRole] = useState('');
   const [showModal, setShowModal] = useState(true);
   const [formData, setFormData] = useState({

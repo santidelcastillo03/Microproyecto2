@@ -1,4 +1,3 @@
-/* HikingRoutes.css */
 
 .rutas-container {
   background-image: url('../../assets/images/background1.png');
@@ -29,7 +28,6 @@
   margin-bottom: 2rem;
 }
 
-/* Mountain silhouette footer */
 .mountain-footer {
   height: 60px;
   background-image: url('/images/mountain-silhouette.png');
@@ -38,7 +36,6 @@
   margin-top: auto;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .routes-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

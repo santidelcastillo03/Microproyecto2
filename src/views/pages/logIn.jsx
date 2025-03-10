@@ -4,7 +4,7 @@ import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import '../../assets/styles/logIn.css';
 import { login } from "./Auth";
-import googleLogo from '../../assets/images/googleLogo.png'; // Adjust path if needed
+import googleLogo from '../../assets/images/googleLogo.png'; 
 import { sendPasswordResetEmail, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../../services/firebaseConfig.js';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';

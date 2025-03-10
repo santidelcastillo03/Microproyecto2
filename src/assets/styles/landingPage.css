@@ -168,7 +168,7 @@ section {
 
 .info-card {
   flex: 1;
-  background-color: #2b4923; /* Verde oscuro */
+  background-color: #2b4923; 
   color: white;
   padding: 2rem;
   border-radius: 10px;
@@ -188,7 +188,6 @@ section {
   flex-grow: 1;
 }
 
-/* Enhanced styling for the info card buttons */
 .info-card .btn-link {
   color: white;
   text-decoration: none;
@@ -234,7 +233,6 @@ section {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Add the arrow icon effect */
 .info-card .btn-link:after {
   content: "→";
   margin-left: 0.6rem;
@@ -246,8 +244,6 @@ section {
   transform: translateX(4px);
 }
 
-/* BUTTONS */
-/* BUTTONS - Enhanced styling */
 .ver-button {
   background: linear-gradient(135deg, #2b4923 0%, #1e3619 100%);
   color: white;
@@ -267,7 +263,6 @@ section {
   overflow: hidden;
 }
 
-/* Add arrow to Ver buttons */
 .ver-button:after {
   content: "→";
   margin-left: 0.4rem;
@@ -333,7 +328,6 @@ section {
 
 
 
-/* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 768px) {
   .hero-content,
   .section-content,

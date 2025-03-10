@@ -9,7 +9,6 @@ function Header() {
   const { currentUser, logout } = useAuth();
   const [userRole, setUserRole] = useState(null);
   
-  // Fetch user role from Firestore when currentUser changes
   useEffect(() => {
     const fetchUserRole = async () => {
       if (currentUser) {
@@ -55,7 +54,6 @@ function Header() {
           <li><Link to="/forum">Foro</Link></li>
           <li><Link to="/gallery">Galería</Link></li>
           
-          {/* Conditional rendering based on user role */}
           {currentUser && userRole === 'estudiante' && (
             <li><Link to="/reservations">Reservas</Link></li>
           )}
@@ -73,7 +71,6 @@ function Header() {
         <a href="#">About us</a>
         <a href="#">FAQ</a>
         
-        {/* Auth buttons */}
         <div className="auth-buttons">
           {currentUser ? (
             <button onClick={handleLogout} className="auth-btn logout-btn">

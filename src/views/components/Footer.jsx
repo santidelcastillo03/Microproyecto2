@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../assets/styles/footer.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
   return (
@@ -27,7 +29,7 @@ function Footer() {
         <div className="footer-feedback">
           <input type="text" placeholder="Feedback" />
           <button className="feedback-button">
-            <i className="fa fa-arrow-right"></i>
+            <FontAwesomeIcon icon={faArrowRight} />
           </button>
         </div>
       </div>
