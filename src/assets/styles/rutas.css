@@ -1,12 +1,14 @@
 
 .rutas-container {
   background-image: url('../../assets/images/background1.png');
-  background-size: 100% auto; /* Change from 'cover' to show more of the height */
+  background-size: 100% auto; 
   background-repeat: no-repeat;
-  background-position: center bottom; /* Change from 'center' to 'center bottom' */
-  min-height: 100vh;
+  background-position: center bottom;
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Ensure full height */
+  position: relative; /* For proper positioning */
+  background-attachment: fixed; /* Optional: keeps background fixed during scroll */
 }
 
 .main-content {
@@ -33,5 +35,38 @@
 @media (max-width: 768px) {
   .routes-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .rutas-container {
+    background-size: cover; 
+    background-position: center 70%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .rutas-container {
+    background-position: center 60%; 
+  }
+  
+  .routes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .rutas-container {
+    background-position: center 50%; 
+    background-size: cover;
+  }
+  
+  .routes-title {
+    font-size: 2rem; 
+    margin: 1.5rem 0;
+  }
+  
+  .main-content {
+    padding: 0 1rem; 
   }
 }
