@@ -347,7 +347,7 @@ button.google-btn img {
 .modal button[type="submit"] {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #2b4923 0%, #1e3619 100%);
+  background: linear-gradient(135deg, #a56a38 0%, #8f5b30 100%); /* Changed to the new brown/orange color */
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -360,7 +360,7 @@ button.google-btn img {
 }
 
 .modal button[type="submit"]:hover {
-  background: linear-gradient(135deg, #324f29 0%, #243e1e 100%);
+  background: linear-gradient(135deg, #b67d4e 0%, #9a541b 100%); /* Slightly lighter on hover */
   transform: translateY(-2px);
   box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15);
 }
