@@ -15,14 +15,11 @@ function Footer() {
           <p className="developed-label">Developed by:</p>
           <div className="footer-developers">
             <div className="developer-column">
-              <p>Nombre 1</p>
-              <p>Nombre 2</p>
-              <p>Nombre 3</p>
+              <p>Andres Da Corte</p>
+              <p>Massimo Restuccia</p>
             </div>
             <div className="developer-column">
-              <p>Nombre 4</p>
-              <p>Nombre 5</p>
-              <p>Nombre 6</p>
+              <p>Santiago Del Castillo</p>
             </div>
           </div>
         </div>

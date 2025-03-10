@@ -67,19 +67,19 @@ function GoogleProfileModal({ onClose, onSubmit, userEmail }) {
         <p>Ingresa tu nombre y selecciona tu rol para completar el registro.</p>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="googleName">Nombre Completo</label>
+            
             <input
               type="text"
               id="googleName"
               name="googleName"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Tu nombre"
+              placeholder="Nombre Completo"
               required
             />
           </div>
           <div className="form-group">
-            <label>Rol</label>
+            
             <div className="modal-buttons">
               <button type="button" onClick={() => setRole('guia')}>
                 Guía

@@ -1,7 +1,10 @@
 /* HikingRoutes.css */
 
 .rutas-container {
-  background-color: #8e8b7b;
+  background-image: url('../../assets/images/background1.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center bottom; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
